@@ -11,4 +11,12 @@ describe("Operaciones CRUD de cafes", () => {
         expect(response.body.length).toBeGreaterThan(0);
     });
 
+    test("DELETE /cafes/:id devuelve 404 si el café no existe", async () => {
+        const response = await request(server)
+            .delete("/cafes/999")
+            .set("Authorization", "token");
+
+        expect(response.statusCode).toBe(404);
+    });
+
 });
