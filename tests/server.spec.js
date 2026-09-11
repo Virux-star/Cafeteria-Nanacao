@@ -19,4 +19,17 @@ describe("Operaciones CRUD de cafes", () => {
         expect(response.statusCode).toBe(404);
     });
 
+    test("POST /cafes agrega un nuevo café y devuelve 201", async () => {
+    const nuevoCafe = {
+        id: 5,
+        nombre: "Latte"
+    };
+
+    const response = await request(server)
+        .post("/cafes")
+        .send(nuevoCafe);
+
+    expect(response.statusCode).toBe(201);
+});
+
 });
